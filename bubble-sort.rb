@@ -14,9 +14,28 @@ def str_to_int_arr(array)
 end
  
 
-
-
-
+def bubble_sort(unsorted)
+  iter = 0
+  tot = 0
+  change = false
+  while !change
+    for i in 0..(unsorted.length - 2 - iter)
+      if unsorted[i] > unsorted[i+1]
+	store = unsorted[i+1]
+	unsorted[i+1] = unsorted[i]
+	unsorted[i] = store
+	iter += 1
+      end
+    end
+    tot += 1
+    if iter == 0 || tot == (unsorted.length - 1)
+      change = true
+    else 
+      iter = 0
+    end
+  end
+  return unsorted
+end
 
 
 values = Array.new(0)
@@ -24,7 +43,7 @@ puts "Hello! Please enter the space delimited numbers you would like us to
 sort"
 int_inps = gets.chomp
 str_ver = int_inps.split(" ")
-values_in_arr = str_to_int_arr(str_ver)
-if values_in_arr != nil
-#bubble_sort()
+unsorted_arr = str_to_int_arr(str_ver)
+if unsorted_arr != nil
+   p bubble_sort(unsorted_arr)
 end
