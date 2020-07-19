@@ -15,20 +15,20 @@ end
  
 
 def bubble_sort(unsorted)
-  iter = 0
+  sort = false
   tot = 0
   change = false
   while !change
-    for i in 0..(unsorted.length - 2 - iter)
+    for i in 0..(unsorted.length - 2 - tot)
       if unsorted[i] > unsorted[i+1]
 	store = unsorted[i+1]
 	unsorted[i+1] = unsorted[i]
 	unsorted[i] = store
-	iter += 1
+	sort = true 
       end
     end
     tot += 1
-    if iter == 0 || tot == (unsorted.length - 1)
+    if !sort || tot == (unsorted.length - 1)
       change = true
     else 
       iter = 0
